@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Container, Row, Col, ListGroup, Button } from "react-bootstrap";
 
 function Detail() {
   const href = window.location.pathname.split("/");
@@ -35,11 +36,30 @@ function Detail() {
     });
   }, []);
 
-  console.log(detail);
-
   function getDetail() {
     let inform = [];
+    let age;
+    var m = 0;
+    var url = "";
+    var text = "Full";
     detail.map((item) => {
+      if (item.Age == 0) {
+        age = "All";
+      } else {
+        age = item.Age + " UP";
+      }
+      console.log(item.Member);
+      if (item.Member != "") {
+        let mm = item.Member.split(",");
+        m = mm.length;
+      }
+      if (m != item.Max) {
+        if (form == "Clubs") url = `/Clubs/${item.ID}/Join`;
+        else url = `/Activities/${item.ID}/Join`;
+
+        text = "Join us now";
+      }
+
       inform.push(
         <Container>
           <br />
@@ -48,10 +68,95 @@ function Detail() {
           <Row>
             <Col>
               <h4>Detail</h4>
-              <p>{item.Description}</p>
+              <p class="fs-5">{item.Description}</p>
+              <br />
+              <h4>Qualification</h4>
+              <ListGroup variant="flush">
+                <ListGroup.Item>
+                  <Row>
+                    <Col>
+                      <p class="fs-6">Age</p>
+                    </Col>
+                    <Col>
+                      <p class="fs-6"> {age}</p>
+                    </Col>
+                  </Row>
+                </ListGroup.Item>
+
+                <ListGroup.Item>
+                  <Row>
+                    <Col>
+                      <p class="fs-6">Gender</p>
+                    </Col>
+                    <Col>
+                      <p class="fs-6">{item.Gender}</p>
+                    </Col>
+                  </Row>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <Row>
+                    <Col>
+                      <p class="fs-6">Faculty</p>
+                    </Col>
+                    <Col>
+                      <p class="fs-6">{item.Faculty}</p>
+                    </Col>
+                  </Row>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <Row>
+                    <Col>
+                      <p class="fs-6">Year</p>
+                    </Col>
+                    <Col>
+                      <p class="fs-6">{item.Year}</p>
+                    </Col>
+                  </Row>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <Row>
+                    <Col>
+                      <p class="fs-6">Own Computer</p>
+                    </Col>
+                    <Col>
+                      <p class="fs-6">{item.Computer}</p>
+                    </Col>
+                  </Row>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <Row>
+                    <Col>
+                      <p class="fs-6">Communication Skill</p>
+                    </Col>
+                    <Col>
+                      <p class="fs-6">{item.CommunicationSkill}</p>
+                    </Col>
+                  </Row>
+                </ListGroup.Item>
+              </ListGroup>
             </Col>
             <Col>
-              <h4>Qualification </h4>
+              <h4>Member</h4>
+              <p class="fs-5">
+                {m}/{item.Max}
+              </p>
+              <br />
+              <Row>
+                <Col>
+                  <Link to={`/${form}`} class="text-decoration-none">
+                    <div class="d-grid gap-2">
+                      <Button variant="outline-secondary">Go back</Button>
+                    </div>
+                  </Link>
+                </Col>
+                <Col>
+                  <Link to={url} class="text-decoration-none">
+                    <div class="d-grid gap-2">
+                      <Button variant="outline-primary">{text}</Button>
+                    </div>
+                  </Link>
+                </Col>
+              </Row>
             </Col>
           </Row>
         </Container>

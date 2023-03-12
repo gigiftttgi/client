@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { redirect, useNavigate, Link } from "react-router-dom";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import Axios from "axios";
 
@@ -13,10 +14,20 @@ function Join() {
   const [com, setCom] = useState("");
   const [phone, setPhone] = useState("0");
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
+  const href = window.location.pathname.split("/");
+  const id = href[2];
+  const form = href[1];
 
   function addStudent() {
-    console.log("add");
+    const href = window.location.pathname.split("/");
+    const id = href[2];
+    const form = href[1];
+
     Axios.post("http://localhost:3001/join", {
+      id: id,
+      form: form,
       name: name,
       age: age,
       stID: stID,
@@ -27,14 +38,22 @@ function Join() {
       com: com,
       phone: phone,
       email: email,
-    }).then(() => {
-      console.log("send complete");
+    }).then((res) => {
+      if (res.data == "Reject") {
+        navigate("/Fail");
+      } else {
+        navigate("/Complete");
+      }
     });
   }
 
   return (
     <div>
-      <Container>Please fill out an application</Container>
+      <Container>
+        <br />
+        <h4>Please fill out an application</h4>
+        <hr />
+      </Container>
       <Container>
         <Form>
           <h5>Information</h5>
@@ -121,7 +140,6 @@ function Join() {
                     <option value="Faculty of Architecture">
                       Faculty of Architecture
                     </option>
-                    <option value="Else">Else</option>
                   </Form.Select>
                 </Form.Group>
               </Col>
@@ -165,7 +183,7 @@ function Join() {
                   >
                     <option>select</option>
                     <option value="Have">Have</option>
-                    <option value="Don'thave">Don'thave</option>
+                    <option value="Don't have">Don't have</option>
                   </Form.Select>
                 </Form.Group>
               </Col>
@@ -178,7 +196,7 @@ function Join() {
                 <Form.Group className="mb-3" controlId="Phone">
                   <Form.Label>Phone</Form.Label>
                   <Form.Control
-                    type="text"
+                    type="number"
                     placeholder="Enter phone"
                     onChange={(event) => setPhone(event.target.value)}
                   />
@@ -198,9 +216,24 @@ function Join() {
           </Container>
 
           <Container>
-            <Button variant="primary" type="submit" onClick={addStudent}>
-              Submit
-            </Button>
+            <Row>
+              <Col>
+                <Link to={`/${form}/${id}`}>
+                  <Button variant="outline-secondary ">Go back</Button>
+                </Link>
+              </Col>
+              <Col>
+                <div class="float-end">
+                  <Button
+                    variant="outline-primary"
+                    // type="submit"
+                    onClick={addStudent}
+                  >
+                    Submit form
+                  </Button>
+                </div>
+              </Col>
+            </Row>
           </Container>
         </Form>
       </Container>

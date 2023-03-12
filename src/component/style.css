@@ -37,3 +37,8 @@ h1 {
 .space {
   margin-bottom: 20px;
 }
+
+.spacebtw {
+  margin-left: 20px;
+  margin-right: 20px;
+}

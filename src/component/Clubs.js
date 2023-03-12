@@ -32,7 +32,7 @@ function Clubs() {
               <Card.Text className="text-truncate">
                 {item.Description}
               </Card.Text>
-              <Link to={`/Clubs/${item.ID}`}>
+              <Link to={`/Clubs/${item.ID}`} class="float-end">
                 <Button variant="outline-primary">Read more</Button>
               </Link>
             </Card.Body>

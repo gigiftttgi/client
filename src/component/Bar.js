@@ -10,8 +10,8 @@ function Bar() {
       <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="/">Collage Clubs & Activities</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
+          <Nav className="ml-auto">
+            {/* <Nav.Link href="/">Home</Nav.Link> */}
             <Nav.Link href="/Clubs">Clubs</Nav.Link>
             <Nav.Link href="/Activities">Activities</Nav.Link>
           </Nav>
