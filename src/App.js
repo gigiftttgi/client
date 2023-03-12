@@ -8,6 +8,7 @@ import Detail from "./component/Detail";
 import Join from "./component/Join";
 import Complete from "./component/Complete";
 import Fail from "./component/Fail";
+import Member from "./component/Member";
 
 function App() {
   return (
@@ -18,9 +19,11 @@ function App() {
         <Route path="/Clubs" element={<Clubs />} />
         <Route path="/Clubs/:id" element={<Detail />} />
         <Route path="/Clubs/:id/Join" element={<Join />} />
+        <Route path="/Clubs/:id/Member" element={<Member />} />
         <Route path="/Activities" element={<Act />} />
         <Route path="/Activities/:id" element={<Detail />} />
         <Route path="/Activities/:id/Join" element={<Join />} />
+        <Route path="/Activities/:id/Member" element={<Member />} />
         <Route path="/Complete" element={<Complete />} />
         <Route path="/Fail" element={<Fail />} />
       </Routes>

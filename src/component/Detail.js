@@ -41,6 +41,7 @@ function Detail() {
     let age;
     var m = 0;
     var url = "";
+    var urlmem = "";
     var text = "Full";
     detail.map((item) => {
       if (item.Age == 0) {
@@ -53,11 +54,17 @@ function Detail() {
         let mm = item.Member.split(",");
         m = mm.length;
       }
+
       if (m != item.Max) {
         if (form == "Clubs") url = `/Clubs/${item.ID}/Join`;
         else url = `/Activities/${item.ID}/Join`;
-
         text = "Join us now";
+      }
+
+      if (form == "Clubs") {
+        url = `/Clubs/${item.ID}/Member`;
+      } else {
+        url = `/Clubs/${item.ID}/Member`;
       }
 
       inform.push(
@@ -137,9 +144,20 @@ function Detail() {
             </Col>
             <Col>
               <h4>Member</h4>
-              <p class="fs-5">
-                {m}/{item.Max}
-              </p>
+              <Row>
+                <Col>
+                  <p class="fs-5">
+                    {m}/{item.Max}
+                  </p>
+                </Col>
+
+                <Col>
+                  <Link to={url} class="text-decoration-none">
+                    <div class="d-grid gap-2">See members</div>
+                  </Link>
+                </Col>
+              </Row>
+
               <br />
               <Row>
                 <Col>
