@@ -41,6 +41,7 @@ function Detail() {
     let age;
     var m = 0;
     var url = "";
+    var url2 = "";
     var urlmem = "";
     var text = "Full";
     detail.map((item) => {
@@ -62,9 +63,9 @@ function Detail() {
       }
 
       if (form == "Clubs") {
-        url = `/Clubs/${item.ID}/Member`;
+        url2 = `/Clubs/${item.ID}/Member`;
       } else {
-        url = `/Clubs/${item.ID}/Member`;
+        url2 = `/Clubs/${item.ID}/Member`;
       }
 
       inform.push(
@@ -152,7 +153,7 @@ function Detail() {
                 </Col>
 
                 <Col>
-                  <Link to={url} class="text-decoration-none">
+                  <Link to={url2} class="text-decoration-none">
                     <div class="d-grid gap-2">See members</div>
                   </Link>
                 </Col>
