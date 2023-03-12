@@ -14,7 +14,7 @@ function Member() {
   const [contact, setContact] = useState([]);
 
   useEffect(() => {
-    Axios.post("http://localhost:3001/member", {
+    Axios.post("https://uptight-wasp-bell-bottoms.cyclic.app/member", {
       id: id,
       form: form,
     }).then((res) => {

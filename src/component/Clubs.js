@@ -7,7 +7,7 @@ import "./style.css";
 function Clubs() {
   const [clubs, setClub] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3001/clubs")
+    fetch("https://uptight-wasp-bell-bottoms.cyclic.app/clubs")
       .then((res) => res.json())
       .then((result) => {
         setClub(result);

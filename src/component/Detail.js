@@ -28,7 +28,7 @@ function Detail() {
   //   console.log(d);
 
   useEffect(() => {
-    Axios.post("http://localhost:3001/detail", {
+    Axios.post("https://uptight-wasp-bell-bottoms.cyclic.app/detail", {
       id: id,
       form: form,
     }).then((res) => {

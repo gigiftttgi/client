@@ -7,7 +7,7 @@ import "./style.css";
 function Act() {
   const [acts, setActs] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3001/act")
+    fetch("https://uptight-wasp-bell-bottoms.cyclic.app/act")
       .then((res) => res.json())
       .then((result) => {
         setActs(result);

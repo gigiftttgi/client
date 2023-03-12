@@ -25,7 +25,7 @@ function Join() {
     const id = href[2];
     const form = href[1];
 
-    Axios.post("http://localhost:3001/join", {
+    Axios.post("https://uptight-wasp-bell-bottoms.cyclic.app/join", {
       id: id,
       form: form,
       name: name,
