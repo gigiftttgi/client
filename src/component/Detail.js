@@ -65,7 +65,7 @@ function Detail() {
       if (form == "Clubs") {
         url2 = `/Clubs/${item.ID}/Member`;
       } else {
-        url2 = `/Clubs/${item.ID}/Member`;
+        url2 = `/Activities/${item.ID}/Member`;
       }
 
       inform.push(
